@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FiNewz: Indian Market</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    /* General Body Styling */
+    body {
+      font-family: 'Poppins', Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('assets/ind.jpg');
+      background-size: cover;
+      background-attachment: fixed;
+      color: #fff;
+    }
+
+    /* Header Styling */
+    header {
+      background: rgba(0, 0, 0, 0.7);
+      padding: 15px 20px;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+    }
+
+    .header-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+    }
+
+    .logo img {
+      width: 120px;
+    }
+
+    nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      gap: 15px;
+    }
+
+    nav ul li {
+      display: inline;
+    }
+
+    nav ul li a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 16px;
+      font-weight: 500;
+      padding: 8px 15px;
+      border-radius: 5px;
+      transition: background 0.3s ease;
+    }
+
+    nav ul li a:hover {
+      background: #3498db;
+    }
+
+    /* Stocks Container */
+    .stocks-container {
+      max-width: 1000px;
+      margin: 50px auto;
+      background: rgba(255, 255, 255, 0.95);
+      color: #2c3e50;
+      padding: 40px;
+      border-radius: 15px;
+      box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.3);
+    }
+
+    .stocks-container h2 {
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+      color: #2980b9;
+      text-align: center;
+    }
+
+    /* Search Bar */
+    .search-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .search-container input {
+      width: 100%;
+      max-width: 400px;
+      padding: 10px 15px;
+      font-size: 16px;
+      border: 2px solid #ddd;
+      border-radius: 25px 0 0 25px;
+      outline: none;
+      transition: border-color 0.3s;
+    }
+
+    .search-container input:focus {
+      border-color: #3498db;
+    }
+
+    .search-container button {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #3498db;
+      color: white;
+      border: none;
+      border-radius: 0 25px 25px 0;
+      cursor: pointer;
+      outline: none;
+      transition: background-color 0.3s;
+    }
+
+    .search-container button:hover {
+      background-color: #2980b9;
+    }
+
+    /* Chart Container */
+    #chart-container {
+      width: 100%;
+      margin-top: 20px;
+    }
+
+    #loading {
+      text-align: center;
+      font-size: 18px;
+      color: #555;
+      margin-top: 20px;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      margin-top: 30px;
+      padding: 20px 0;
+      font-size: 14px;
+      color: #bdc3c7;
+      background: rgba(0, 0, 0, 0.7);
+    }
+
+    footer a {
+      color: #3498db;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header Section -->
+  <header>
+    <div class="header-container">
+      <div class="logo">
+        <img src="assets/original1.png" alt="FiNewz Logo">
+      </div>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="global.html">Global News</a></li>
+          <li><a href="stocks.html" class="active">Stocks</a></li>
+          <li><a href="news.html">News Feed</a></li>
+          <li><a href="crypto.html">Crypto</a></li>
+          <li><a href="index.html">Contact</a></li>
+          <!-- <li><a href="index.html">About</a></li> -->
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <div class="stocks-container">
+    <h2>Search for a Company</h2>
+
+    <!-- Search Section -->
+    <div class="search-container">
+      <input type="text" id="companySymbol" placeholder="Enter company symbol (e.g., IBM, GOOGL, NVDA)">
+      <button onclick="fetchCompanyStock()">Search</button>
+    </div>
+
+    <!-- Loading Message -->
+    <div id="loading">Enter a company symbol to load stock data.</div>
+
+    <!-- Chart Section -->
+    <div id="chart-container">
+      <canvas id="stockChart"></canvas>
+    </div>
+  </div>
+
+  <!-- Footer Section -->
+  <footer>
+    © 2024 FiNewz. Built with 💙 by FiNewz Team. <a href="#">Contact Us</a>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+    let stockChart; // Variable to store the chart instance
+
+    async function fetchCompanyStock() {
+      const symbolInput = document.getElementById('companySymbol');
+      const companySymbol = symbolInput.value.trim();
+      const loading = document.getElementById('loading');
+      const ctx = document.getElementById('stockChart').getContext('2d');
+
+      if (!companySymbol) {
+        alert('Please enter a valid company symbol.');
+        return;
+      }
+
+      loading.textContent = 'Loading stock data...';
+
+      try {
+        // Fetch stock data from the backend for the given symbol
+        const response = await fetch(`http://localhost:3000/api/indian-stocks?symbol=${companySymbol}`);
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+
+        const stockData = await response.json();
+        const timeSeries = stockData['Time Series (5min)'];
+
+        if (!timeSeries) {
+          loading.textContent = `No data available for "${companySymbol}".`;
+          return;
+        }
+
+        // Extract time and close prices for the chart
+        const labels = [];
+        const closePrices = [];
+
+        Object.entries(timeSeries).forEach(([time, data]) => {
+          labels.push(time); // Time for the x-axis
+          closePrices.push(parseFloat(data['4. close'])); // Close price for the y-axis
+        });
+
+        // Reverse the data to show the oldest time first
+        labels.reverse();
+        closePrices.reverse();
+
+        // Hide loading text
+        loading.style.display = 'none';
+
+        // Destroy the previous chart if it exists
+        if (stockChart) {
+          stockChart.destroy();
+        }
+
+        // Render the new chart
+        stockChart = new Chart(ctx, {
+          type: 'line', // Line chart
+          data: {
+            labels: labels, // X-axis labels (timestamps)
+            datasets: [{
+              label: `Close Price (₹) - ${companySymbol}`,
+              data: closePrices, // Y-axis data (close prices)
+              borderColor: 'rgba(41, 128, 185, 0.8)',
+              backgroundColor: 'rgba(41, 128, 185, 0.2)',
+              borderWidth: 2, // Set thin line
+              tension: 0.4, // Smooth the line
+              pointRadius: 0, // Remove points
+            }]
+          },
+          options: {
+            responsive: true,
+            plugins: {
+              legend: {
+                display: true,
+                position: 'top',
+                labels: {
+                  color: '#2c3e50',
+                  font: {
+                    size: 14,
+                  },
+                },
+              },
+            },
+            scales: {
+              x: {
+                title: {
+                  display: true,
+                  text: 'Time',
+                  color: '#2c3e50',
+                  font: {
+                    size: 14,
+                  },
+                },
+                ticks: {
+                  maxTicksLimit: 10, // Limit the number of x-axis labels
+                  color: '#34495e',
+                },
+              },
+              y: {
+                title: {
+                  display: true,
+                  text: 'Price (₹)',
+                  color: '#2c3e50',
+                  font: {
+                    size: 14,
+                  },
+                },
+                ticks: {
+                  color: '#34495e',
+                },
+              },
+            },
+          },
+        });
+      } catch (error) {
+        loading.textContent = `Failed to load stock data for "${companySymbol}".`;
+        console.error('Error fetching stock data:', error);
+      }
+    }
+  </script>
+</body>
+</html>
