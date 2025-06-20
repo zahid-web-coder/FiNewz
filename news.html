@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FiNewz: News Feed</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* General Styling */
+    body {
+      font-family: 'Poppins', Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('assets/nep.jpg');
+      background-size: cover;
+      background-attachment: fixed;
+      color: #fff;
+      width: 1450px;
+    }
+
+    /* Header Styling */
+    header {
+      background: rgba(0, 0, 0, 0.9);
+      width: 100%;
+      padding: 10px 0;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .header-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%; /* Ensures full width */
+      padding: 0 20px;
+    }
+
+    .logo img {
+      width: 100px;
+    }
+
+    nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      gap: 20px;
+    }
+
+    nav ul li a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 16px;
+      font-weight: 500;
+      padding: 8px 15px;
+      border-radius: 5px;
+      transition: background 0.3s ease;
+    }
+
+    nav ul li a:hover {
+      background: #3498db;
+    }
+
+    nav ul li a.active {
+      background: #3498db;
+    }
+
+    /* News Feed Container */
+    .news-feed-container {
+      display: flex;
+      justify-content: center; /* Centers the news container */
+      align-items: center;
+      padding: 50px 0;
+    }
+
+    .news-container {
+      max-width: 1000px;
+      margin: 0 auto;
+      background: rgba(255, 255, 255, 0.95);
+      color: #2c3e50;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.3);
+      text-align: center;
+    }
+
+    .news-container h2 {
+      text-align: center;
+      color: #2980b9;
+      margin-bottom: 20px;
+    }
+
+    .category-select {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    .category-select select {
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      outline: none;
+      width: 250px;
+    }
+
+    #news-items {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+    }
+
+    .news-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      background: #f8f9fa;
+      box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+    }
+
+    .news-item img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+    }
+
+    .news-content {
+      padding: 15px;
+      text-align: center;
+    }
+
+    .news-content h3 {
+      margin: 0 0 10px;
+      color: #3498db;
+      font-size: 1.1rem;
+    }
+
+    .news-content p {
+      margin: 0 0 10px;
+      color: #333;
+    }
+
+    .news-content a {
+      color: #007bff;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .news-content a:hover {
+      text-decoration: underline;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 30px;
+      padding: 20px 0;
+      font-size: 14px;
+      color: #bdc3c7;
+      background: rgba(0, 0, 0, 0.7);
+    }
+
+    footer a {
+      color: #3498db;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header Section -->
+  <header>
+    <div class="header-container">
+      <div class="logo">
+        <img src="assets/original1.png" alt="FiNewz Logo">
+      </div>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="global.html">Global News</a></li>
+          <li><a href="stocks.html">Stocks</a></li>
+          <li><a href="news.html" class="active">News Feed</a></li>
+          <li><a href="crypto.html">Crypto</a></li>
+          <li><a href="index.html">Contact</a></li>
+          <!-- <li><a href="index.html">About</a></li> -->
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main>
+    <div class="news-feed-container">
+      <div class="news-container">
+        <h2>Latest News Feed</h2>
+        <div class="category-select">
+          <select id="category-select" onchange="fetchNewsFeed()">
+            <option value="business">Business</option>
+            <option value="entertainment">Entertainment</option>
+            <option value="general">General</option>
+            <option value="health">Health</option>
+            <option value="science">Science</option>
+            <option value="sports">Sports</option>
+            <option value="technology">Technology</option>
+          </select>
+        </div>
+        <div id="news-items"></div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    © 2024 FiNewz. Built with 💙 by FiNewz Team. <a href="#">Contact Us</a>
+  </footer>
+
+  <script>
+    async function fetchNewsFeed() {
+      const category = document.getElementById('category-select').value;
+      const newsItems = document.getElementById('news-items');
+
+      // Clear existing news
+      newsItems.innerHTML = '<p>Loading news...</p>';
+
+      try {
+        const response = await fetch(`http://localhost:3000/api/news-feed?category=${category}`);
+        const articles = await response.json();
+
+        // Clear the loading text
+        newsItems.innerHTML = '';
+
+        articles.forEach(article => {
+          const newsItem = document.createElement('div');
+          newsItem.classList.add('news-item');
+
+          const imageUrl = article.urlToImage || 'assets/placeholder-image.png'; // Fallback image
+
+          newsItem.innerHTML = `
+            <img src="${imageUrl}" alt="News Image">
+            <div class="news-content">
+              <h3>${article.title}</h3>
+              <p>${article.description || 'No description available.'}</p>
+              <a href="${article.url}" target="_blank">Read more</a>
+            </div>
+          `;
+
+          newsItems.appendChild(newsItem);
+        });
+      } catch (error) {
+        newsItems.innerHTML = '<p>Failed to load news. Please try again later.</p>';
+        console.error('Error fetching news:', error);
+      }
+    }
+
+    // Fetch default category news on page load
+    fetchNewsFeed();
+  </script>
+</body>
+</html>

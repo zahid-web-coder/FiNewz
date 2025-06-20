@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FiNewz | Your Financial Insights Hub</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* General Styling */
+        body {
+            margin: 0;
+            font-family: 'Poppins', Arial, sans-serif;
+            color: #333;
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('assets/add.jpg') no-repeat center center/cover;
+        }
+
+        /* Header Styling */
+        header {
+            background: rgba(0, 0, 0, 0.9);
+            padding: 15px 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            height: 100px;
+        }
+
+        .logo img {
+            width: 150px;
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 15px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: background 0.3s ease;
+        }
+
+        nav ul li a:hover,
+        nav ul li a.active {
+            background: #007bff;
+        }
+
+        /* Hero Section Styling */
+        .hero-section {
+            text-align: center;
+            padding: 100px 20px;
+            color: #fff;
+        }
+
+        .hero-section h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            color: #e2d51b;
+            text-transform: uppercase;
+        }
+
+        .hero-section p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            margin-bottom: 30px;
+            line-height: 1.6;
+            color: #f0f0f0;
+        }
+
+        .hero-section .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .hero-section button {
+            background-color: #007bff;
+            color: #fff;
+            font-size: 1rem;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .hero-section button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Features Section Styling */
+        .features-section {
+            background: #f9f9f9;
+            padding: 50px 20px;
+            text-align: center;
+        }
+
+        .features-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            color: #007bff;
+        }
+
+        .features-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .feature {
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .feature:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .feature i {
+            font-size: 2rem;
+            color: #007bff;
+            margin-bottom: 15px;
+        }
+
+        .feature h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .feature p {
+            font-size: 1rem;
+            color: #555;
+        }
+
+        /* Footer Styling */
+        footer {
+            background: rgba(0, 0, 0, 0.9);
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+            font-size: 14px;
+        }
+
+        footer a {
+            color: #3498db;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="assets/original1.png" alt="FiNewz Logo">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="global.html">Global News</a></li>
+                <li><a href="stocks.html">Stocks</a></li>
+                <li><a href="news.html">News Feed</a></li>
+                <li><a href="crypto.html">Crypto</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <!-- <li><a href="about.html">About</a></li> -->
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero-section">
+        <h1>Welcome to FiNewz</h1>
+        <p>Your ultimate destination for financial insights, global market trends, and expert views. Explore curated news, in-depth analyses, and updates from Indian and global markets.</p>
+        <div class="cta-buttons">
+            <button onclick="location.href='news.html'">Explore News</button>
+            <button onclick="location.href='crypto.html'">View Crypto Trends</button>
+        </div>
+    </section>
+
+    <section class="features-section">
+        <h2>What We Offer</h2>
+        <div class="features-container">
+            <div class="feature">
+                <i class="fas fa-chart-line"></i>
+                <h3>Market Insights</h3>
+                <p>Stay updated with the latest trends in the global and Indian financial markets.</p>
+            </div>
+            <div class="feature">
+                <i class="fas fa-globe"></i>
+                <h3>Global News</h3>
+                <p>Access breaking news and updates from around the world in one place.</p>
+            </div>
+            <div class="feature">
+                <i class="fas fa-coins"></i>
+                <h3>Crypto Trends</h3>
+                <p>Analyze the latest cryptocurrency prices and trends in real time.</p>
+            </div>
+            <div class="feature">
+                <i class="fas fa-newspaper"></i>
+                <h3>Curated Content</h3>
+                <p>Explore expert-curated content tailored to your financial interests.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 FiNewz<br>Contact us at: <a href="mailto:info@FiNewz.com">info@FiNewz.com</a></p>
+    </footer>
+</body>
+</html>
