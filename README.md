@@ -51,16 +51,15 @@ INDIAN_NEWS_API_KEY=your_alpha_vantage_key
 CRYPTO_API_KEY=your_coinmarketcap_key
 Then open http://localhost:3000
 
-📬 Contact
+## 📬 Contact
 Feel free to connect:
-
 📧 Email: mohammedzahid2217@gmail.com
 
 🔗 LinkedIn
 
 🐱 GitHub
 
-📄 License
+## 📄 License
 This project is licensed under the MIT License.
 
 ---
