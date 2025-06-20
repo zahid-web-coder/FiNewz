@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FiNewz: Global News</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    /* General Styling */
+    body {
+      font-family: 'Poppins', Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('assets/wld.jpg');
+      background-size: cover;
+      background-attachment: fixed;
+      color: #fff;
+    }
+
+    /* Header Styling */
+    header {
+      background: rgba(0, 0, 0, 0.7);
+      padding: 15px 20px;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+    }
+
+    .header-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .logo img {
+      width: 120px;
+    }
+
+    nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      gap: 15px;
+    }
+
+    nav ul li a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 16px;
+      font-weight: 500;
+      padding: 8px 15px;
+      border-radius: 5px;
+      transition: background 0.3s ease;
+    }
+
+    nav ul li a:hover {
+      background: #3498db;
+    }
+
+    nav ul li a.active {
+      background: #3498db;
+    }
+
+    /* Main Container */
+    .news-container {
+      max-width: 1000px;
+      margin: 50px auto;
+      background: rgba(255, 255, 255, 0.95);
+      color: #2c3e50;
+      padding: 40px;
+      border-radius: 15px;
+      box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.3);
+    }
+
+    .news-container h2 {
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+      color: #2980b9;
+      text-align: center;
+    }
+
+    /* News Items */
+    .news-item {
+      margin-bottom: 20px;
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 15px;
+    }
+
+    .news-item:last-child {
+      border-bottom: none;
+    }
+
+    .news-item h3 {
+      font-size: 1.2rem;
+      color: #2c3e50;
+      margin: 0 0 10px;
+    }
+
+    .news-item p {
+      font-size: 1rem;
+      color: #555;
+      margin: 0 0 10px;
+    }
+
+    .news-item a {
+      color: #3498db;
+      font-weight: 500;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .news-item a:hover {
+      color: #2c3e50;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      margin-top: 30px;
+      padding: 20px 0;
+      font-size: 14px;
+      color: #bdc3c7;
+      background: rgba(0, 0, 0, 0.7);
+    }
+
+    footer a {
+      color: #3498db;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header Section -->
+  <header>
+    <div class="header-container">
+      <div class="logo">
+        <img src="assets/original1.png" alt="FiNewz Logo">
+      </div>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="global.html" class="active">Global News</a></li>
+          <li><a href="stocks.html">Stocks</a></li>
+          <li><a href="news.html">News Feed</a></li>
+          <li><a href="crypto.html">Crypto</a></li>
+          <li><a href="index.html">Contact</a></li>
+          <!-- <li><a href="index.html">About</a></li> -->
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main>
+    <div class="news-container" id="news-container">
+      <h2>Global Financial News</h2>
+      <div id="loading">Loading news...</div>
+    </div>
+  </main>
+
+  <!-- Footer Section -->
+  <footer>
+    © 2024 FiNewz. Built with 💙 by FiNewz Team. <a href="#">Contact Us</a>
+  </footer>
+
+  <script>
+    async function fetchGlobalNews() {
+      const newsContainer = document.getElementById('news-container');
+      const loading = document.getElementById('loading');
+
+      try {
+        const response = await fetch('http://localhost:3000/api/global-news');
+        const news = await response.json();
+        loading.style.display = 'none';
+
+        news.forEach(article => {
+          const newsItem = document.createElement('div');
+          newsItem.classList.add('news-item');
+
+          newsItem.innerHTML = `
+            <h3>${article.title}</h3>
+            <p>${article.description || 'No description available.'}</p>
+            <a href="${article.url}" target="_blank">Read more</a>
+          `;
+
+          newsContainer.appendChild(newsItem);
+        });
+      } catch (error) {
+        loading.textContent = 'Failed to load news. Please try again later.';
+        console.error('Error fetching global news:', error);
+      }
+    }
+
+    fetchGlobalNews();
+  </script>
+</body>
+</html>
