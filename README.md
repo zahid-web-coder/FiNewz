@@ -33,25 +33,24 @@
 
 ---
 
-## 📂 Folder Structure
+📂 Folder Structure
 
-```bash
 FiNewz-main/
-├── public/              # Frontend files
-│   ├── index.html
-│   ├── style.css
-│   └── script.js
-├── server.js            # Express server
-├── package.json         # Project dependencies
-├── .env                 # API Keys (not committed)
+├── public/ # Frontend files
+│ ├── index.html
+│ ├── style.css
+│ └── script.js
+├── server.js # Express server
+├── package.json # Project dependencies
+├── .env # API Keys (not committed)
 └── .gitignore
 
 
 ---
 
-## 🔐 Environment Variables
+🔐 Environment Variables
 
-Create a `.env` file in the root directory with the following:
+Create a .env file in the root directory with the following:
 
 ```env
 GLOBAL_NEWS_API_KEY=your_newsapi_key
