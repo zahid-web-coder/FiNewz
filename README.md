@@ -4,6 +4,10 @@
 
 🔗 **Live Demo**: [https://finewz.onrender.com](https://finewz.onrender.com)
 
+## 📽 Demo Video
+
+🎥 [Watch the project demo on LinkedIn](https://www.linkedin.com/posts/mohammad-zahid-88970b298_finewz-financetech-financialnews-activity-7308326451013947392-oZVv?utm_source=share&utm_medium=member_android&rcm=ACoAAEgCIykB62baPuAKowNSqke6nmxc3dVAiVg)
+
 ---
 
 ## 🚀 Features
@@ -64,12 +68,3 @@ This project is licensed under the MIT License.
 
 ---
 
-## ✅ How to Use
-
-1. Open your repo: [https://github.com/zahid-web-coder/FiNewz](https://github.com/zahid-web-coder/FiNewz)
-2. Click `Add file` > `Create new file`
-3. Name it `README.md`
-4. Paste the above content
-5. Scroll down and click **Commit new file**
-
-You're done! Let me know if you'd like to add GIF demos, a badge header, or deploy status.
