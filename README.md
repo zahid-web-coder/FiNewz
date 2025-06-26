@@ -53,9 +53,13 @@ Create a `.env` file in the root directory with the following:
 GLOBAL_NEWS_API_KEY=your_newsapi_key
 INDIAN_NEWS_API_KEY=your_alpha_vantage_key
 CRYPTO_API_KEY=your_coinmarketcap_key
+
+---
+
 Then open http://localhost:3000
 
 ---
+
 
 ## 📬 Contact
 Feel free to connect:
