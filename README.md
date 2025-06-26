@@ -4,6 +4,8 @@
 
 🔗 **Live Demo**: [https://finewz.onrender.com](https://finewz.onrender.com)
 
+---
+
 ## 📽 Demo Video
 
 🎥 [Watch the project demo on LinkedIn](https://www.linkedin.com/posts/mohammad-zahid-88970b298_finewz-financetech-financialnews-activity-7308326451013947392-oZVv?utm_source=share&utm_medium=member_android&rcm=ACoAAEgCIykB62baPuAKowNSqke6nmxc3dVAiVg)
@@ -33,46 +35,46 @@
 
 ## 📂 Folder Structure
 
+```bash
 FiNewz-main/
-├── public/ # Frontend files
-│ ├── index.html
-│ ├── style.css
-│ └── script.js
-├── server.js # Express server
-├── package.json # Project dependencies
-├── .env # API Keys (not committed)
+├── public/              # Frontend files
+│   ├── index.html
+│   ├── style.css
+│   └── script.js
+├── server.js            # Express server
+├── package.json         # Project dependencies
+├── .env                 # API Keys (not committed)
 └── .gitignore
+
 
 ---
 
-## 🔐 Environment Variables
+🔐 Environment Variables
 
-Create a `.env` file in the root directory with the following:
+Create a .env file in the root directory with the following:
 
-```env
 GLOBAL_NEWS_API_KEY=your_newsapi_key
 INDIAN_NEWS_API_KEY=your_alpha_vantage_key
 CRYPTO_API_KEY=your_coinmarketcap_key
 
+Then open http://localhost:3000 in your browser.
+
+
 ---
 
-Then open http://localhost:3000
+📬 Contact
 
----
-
-
-## 📬 Contact
 Feel free to connect:
 📧 Email: mohammedzahid2217@gmail.com
-
 🔗 LinkedIn
-
 🐱 GitHub
 
+
 ---
 
-## 📄 License
+📄 License
+
 This project is licensed under the MIT License.
 
----
 
+---
