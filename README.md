@@ -33,7 +33,7 @@
 
 ---
 
-📂 Folder Structure
+## 📂 Folder Structure
 
 FiNewz-main/
 ├── public/ # Frontend files
@@ -48,7 +48,7 @@ FiNewz-main/
 
 ---
 
-🔐 Environment Variables
+## 🔐 Environment Variables
 
 Create a .env file in the root directory with the following:
 
@@ -62,13 +62,10 @@ Then open http://localhost:3000 in your browser.
 
 ---
 
-📬 Contact
+## 📬 Contact
 
 Feel free to connect:
 📧 Email: mohammedzahid2217@gmail.com
-🔗 LinkedIn
-🐱 GitHub
-
 
 ---
 
